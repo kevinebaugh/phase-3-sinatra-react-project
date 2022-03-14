@@ -46,7 +46,21 @@ class ApplicationController < Sinatra::Base
   end
   # end POSTs
 
+  # start PUTs/PATCHes
+  patch "/dogs/:id" do
+    dog = Dog.find(params[:id])
+    dog.update(params)
+    dog.to_json
+  end
+  # end PUTs/PATCHes
+
   # start DELETEs
+  delete "/dogs/:id" do
+    dog = Dog.find(params[:id])
+    dog.delete
+    dog.to_json
+  end
+
   delete "/waterbowl_visits/:id" do
     waterbowl_visit = WaterbowlVisit.find(params[:id])
     waterbowl_visit.delete
