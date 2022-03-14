@@ -22,7 +22,7 @@ Waterbowl.create(
 )
 puts "Waterbowls created"
 
-100.times do
+5.times do
   WaterbowlVisit.create(
     dog_id: Dog.all.sample.id,
     waterbowl_id: Waterbowl.all.sample.id,
