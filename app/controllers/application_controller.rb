@@ -16,7 +16,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/waterbowl_visits" do
-    WaterbowlVisit.all.to_json
+    WaterbowlVisit.all.order(created_at: :desc).to_json
   end
 
   # end GETs
