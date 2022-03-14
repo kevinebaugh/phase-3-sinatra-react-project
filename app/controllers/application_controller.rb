@@ -6,7 +6,6 @@ class ApplicationController < Sinatra::Base
   end
 
   # start GETs
-
   get "/dogs" do
     Dog.all.to_json
   end
@@ -18,11 +17,9 @@ class ApplicationController < Sinatra::Base
   get "/waterbowl_visits" do
     WaterbowlVisit.all.order(created_at: :desc).to_json
   end
-
   # end GETs
 
   # start POSTs
-
   post "/dogs" do
     dog = Dog.create(
       name: params[:name]
@@ -47,6 +44,13 @@ class ApplicationController < Sinatra::Base
     )
     waterbowl_visit.to_json
   end
-
   # end POSTs
+
+  # start DELETEs
+  delete "/waterbowl_visits/:id" do
+    waterbowl_visit = WaterbowlVisit.find(params[:id])
+    waterbowl_visit.delete
+    waterbowl_visit.to_json
+  end
+  # end DELETEs
 end
