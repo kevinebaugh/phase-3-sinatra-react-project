@@ -18,4 +18,11 @@ class Dog < ActiveRecord::Base
       .limit(1)[0]
   end
 
+  def hush
+    self.waterbowl_visits.each do |visit|
+      visit.comment = "(silence)"
+      visit.save
+    end
+  end
+
 end
